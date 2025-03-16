@@ -1,52 +1,16 @@
 import { getStamp } from "@/app/libs/stamps";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import { SocialLink } from "@/app/components/social_link";
-import { socialLinks } from "@/app/config";
-import { FaWhatsapp } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
+import StampDetail from "@/app/components/stamps/stamp_detail";
 
-const StampDetail = async ({ params }) => {
-  const stamp = await getStamp(params.slug);
+export default async function Detail({ params }) {
+  const slugParam = await params;
+  if (!slugParam || !slugParam.slug) return notFound();
+
+  const stamp = await getStamp(slugParam.slug);
 
   if (!stamp) {
     notFound();
   }
 
-  return (
-    <>
-      <main className="flex w-full justify-between mt-16 flex-wrap md:gap-8 gap-4">
-        <div className="h-[25rem] md:flex-1 rounded-lg bg-red-400">
-          <Image
-            src={stamp.image}
-            width={100}
-            height={100}
-            className="w-full h-full rounded-lg"
-          />
-        </div>
-
-        <div className="flex-1 flex flex-col">
-          <div className="text-center flex flex-col gap-3">
-            <h1 className="text-3xl font-bold tracking-wide">{stamp.title}</h1>
-            <p className="font-mono text-gray-400">
-              Premium Concrete Stamping Solutions for Stunning, Long-Lasting
-              Floors
-            </p>
-          </div>
-          <div className="w-full p-4 text-center">
-            <h3 className="text-center font-extrabold text-rose-500">
-              Contact us
-            </h3>
-            <div className="flex justify-center gap-3">
-              <SocialLink href={socialLinks.whatsapp} icon={FaWhatsapp} />
-
-              <SocialLink href={socialLinks.email} icon={MdEmail} />
-            </div>
-          </div>
-        </div>
-      </main>
-    </>
-  );
-};
-
-export default StampDetail;
+  return <StampDetail stamp={stamp} />;
+}

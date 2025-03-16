@@ -6,7 +6,6 @@ import { FaWhatsapp } from "react-icons/fa6";
 
 export default function StampItem({ title, slug, image, description }) {
   return (
-    // <Link href={`/arts/${slug}`}>
       <article className="flex flex-col gap-2 bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg">
         <header className="w-full h-100">
           <div className="h-full">
@@ -15,6 +14,7 @@ export default function StampItem({ title, slug, image, description }) {
               alt={title}
               width={100}
               height={100}
+              priority
               className="w-full h-full"
             />
           </div>
@@ -24,8 +24,8 @@ export default function StampItem({ title, slug, image, description }) {
           <div className="flex items-center">
             <h2 className="text-2xl">{title}</h2>{" "}
           </div>
-          <p className="text-sm text-gray-400">{description}</p>
-          <p className="flex items-center justify-between pr-2 my-2">
+          <p className="text-sm text-gray-400 line-clamp-1">{description}</p>
+          <div className="flex items-center justify-between pr-2 my-2">
             <div className="bg-gray-200 p-2 rounded-md hover:bg-gray-600">
               <Link
                 href={`/stamp/${slug}`}
@@ -35,9 +35,8 @@ export default function StampItem({ title, slug, image, description }) {
               </Link>
             </div>
             <SocialLink href={socialLinks.whatsapp} icon={FaWhatsapp} />
-          </p>
+          </div>
         </div>
       </article>
-    // </Link>
   );
 }

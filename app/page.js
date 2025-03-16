@@ -11,7 +11,7 @@ export default function Home() {
 
         <div className="flex flex-col md:justify-center">
           <div className="text-center flex flex-col gap-3">
-            <h1 className="text-3xl font-bold tracking-wide">
+            <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
               <span className="italic text-slate-400 font-semibold antialiased">
                 Kentec:
               </span>{" "}
@@ -41,7 +41,7 @@ export default function Home() {
       </header>
       <main className="">
         <section className="max-w-3/4 mx-auto text-center flex flex-col gap-4">
-          <h2 className="text-center text-3xl md:text-5xl font-bold py-10">How we work</h2>
+          <h2 className="text-center text-2xl md:text-5xl font-bold py-6">How we work</h2>
           <p className="md:w-3/4 mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sem
             libero, euismod vel euismod ut, tempor sed orci. Mauris id purus
@@ -54,7 +54,7 @@ export default function Home() {
         </section>
 
         <section className="max-w-3/4 mx-auto text-center flex flex-col gap-4">
-          <h2 className="text-center text-3xl md:text-5xl font-bold py-10">Why Kentec Stamps</h2>
+          <h2 className="text-center text-2xl md:text-5xl font-bold py-6">Why Kentec Stamps</h2>
           <p className="md:w-3/4 mx-auto">
             Etiam ut viverra lectus. Integer hendrerit massa tortor, ac pretium
             mi scelerisque nec. Vivamus sed neque urna. Suspendisse quis orci ut
