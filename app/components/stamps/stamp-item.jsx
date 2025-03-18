@@ -5,6 +5,11 @@ import { socialLinks } from "@/app/config";
 import { FaWhatsapp } from "react-icons/fa6";
 
 export default function StampItem({ title, slug, image, description }) {
+
+
+    const message = `Hello! I'm interested in this image: ${image}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `${socialLinks.whatsapp}?text=${encodedMessage}`
   return (
       <article className="flex flex-col gap-2 bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg">
         <header className="w-full h-100">
@@ -34,7 +39,7 @@ export default function StampItem({ title, slug, image, description }) {
                 View Details
               </Link>
             </div>
-            <SocialLink href={socialLinks.whatsapp} icon={FaWhatsapp} />
+              <SocialLink href={whatsappUrl} icon={FaWhatsapp}/>
           </div>
         </div>
       </article>
