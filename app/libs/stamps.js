@@ -1,6 +1,5 @@
 import sql from "better-sqlite3"
 import slugify from "slugify"
-import fs from "node:fs"
 import cloudinary from "@/app/libs/cloudinary";
 
 
@@ -55,23 +54,25 @@ export async function saveStamp(stamp) {
     const imageBuffer = Buffer.from(bufferedImage);
   
     // Upload the image to Cloudinary
-    const uploadResponse = await cloudinary.uploader.upload_stream(
-      {
-        folder: "stamps", // Saves in "stamps/" folder on Cloudinary
-        public_id: stamp.slug, // Custom filename based on slug
-        resource_type: "image",
-      },
-      (error, result) => {
-        if (error) {
-          throw new Error("Image upload failed");
+    const uploadResponse = await new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        {
+          folder: "stamps",
+          public_id: stamp.slug,
+          resource_type: "image",
+        },
+        (error, result) => {
+          if (error) {
+            reject(new Error("Image upload failed"));
+          } else {
+            resolve(result);
+          }
         }
-        return result;
-      }
-    );
+      );
   
-    // Convert buffer to a readable stream for upload
-    const stream = fs.createReadStream(imageBuffer);
-    stream.pipe(uploadResponse);
+      // Write buffer to stream
+      stream.end(imageBuffer);
+    });
   
     // Save Cloudinary image URL in SQLite
     stamp.image = uploadResponse.secure_url;
@@ -87,4 +88,4 @@ export async function saveStamp(stamp) {
       )
       `
     ).run(stamp);
-}
+  }
