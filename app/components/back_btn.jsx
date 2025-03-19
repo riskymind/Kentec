@@ -1,5 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 function BackButton({
   className,
@@ -7,9 +8,12 @@ function BackButton({
 }) {
   const router = useRouter()
   return (
-    <button className={className} onClick={() => router.back()}>
+    <motion.button 
+    whileTap={{scale: 0.9}}
+    whileHover={{scale: 1.1}}
+    className={className} onClick={() => router.back()}>
       {children || "Back"}
-    </button>
+    </motion.button>
   );
 }
 

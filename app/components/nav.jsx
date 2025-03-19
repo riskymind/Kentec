@@ -6,6 +6,7 @@ import Image from "next/image";
 import NavLink from "./nav_link";
 import { FaHamburger, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -40,30 +41,36 @@ export default function Navbar() {
           aria-label="Toggle Menu"
           onClick={() => setOpenMenu(!openMenu)}
         >
-          {openMenu ? (
-            <FaTimes size={34} />
-          ) : (
-            <FaHamburger size={34} />
-          )}
+          {openMenu ? <FaTimes size={34} /> : <FaHamburger size={34} />}
         </button>
       </header>
 
-      {openMenu && (
-        <nav className="h-full md:hidden transition-all duration-800 ease-in-out">
-          <ul className="absolute flex h-full z-20 w-[200px] right-0 flex-col gap-4 p-6 bg-gray-500/90">
-            <li className="w-full" onClick={()=> setOpenMenu(!openMenu)}>
-              <NavLink href="/stamp" className="hover:bg-gray-800 w-full">
-                Gallery
-              </NavLink>
-            </li>
-            <li className="w-full" onClick={()=> setOpenMenu(!openMenu)}>
-              <NavLink href="/about" className="hover:bg-gray-800 w-full">
-                About Us
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      )}
+      <AnimatePresence>
+        {openMenu && (
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: "90%", opacity: 1 }}
+            exit={{ x: "100%", opacity: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }} 
+            className="h-full md:hidden transition-all duration-800 ease-in-out absolute z-20"           
+          >
+            <nav className="h-full">
+              <ul className="flex z-20 w-[200px] flex-col gap-4 p-6 bg-gray-500/90">
+                <li className="w-full" onClick={() => setOpenMenu(!openMenu)}>
+                  <NavLink href="/stamp" className="hover:bg-gray-800 w-full">
+                    Gallery
+                  </NavLink>
+                </li>
+                <li className="w-full" onClick={() => setOpenMenu(!openMenu)}>
+                  <NavLink href="/about" className="hover:bg-gray-800 w-full">
+                    About Us
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function StampDetail({ stamp }) {
             width={100}
             height={100}
             alt={stamp.title}
-            className="w-full h-full rounded-lg"
+            className="w-full h-full rounded-lg drop-shadow-[0_35px_35px_rgba(255,255,255,0.25)]"
           />
         </div>
 
@@ -32,9 +32,9 @@ export default function StampDetail({ stamp }) {
               Contact us
             </h3>
             <div className="flex justify-center gap-3">
-              <SocialLink href={socialLinks.whatsapp} icon={FaWhatsapp} />
+              <SocialLink href={socialLinks.whatsapp} icon={FaWhatsapp} size={34} color={"25D366"}/>
 
-              <SocialLink href={socialLinks.email} icon={MdEmail} />
+              <SocialLink href={socialLinks.email} icon={MdEmail} size={34} color={""}/>
             </div>
           </div>
         </div>

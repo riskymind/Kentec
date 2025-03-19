@@ -19,7 +19,7 @@ export default function AboutUs() {
             <Image
               src={logoImg} 
               alt="Concrete Stamping Work"
-              className="animate-pulse rounded-lg"
+              className="animate-pulse rounded-lg rotate-x-15 -rotate-y-30"
             />
           </div>
           <div className="w-full md:w-1/2 p-4">

@@ -31,10 +31,11 @@ const ImagePicker = ({ label, name }) => {
           <div className="mb-1">
             <Image
               src={pickedImage}
-              width={100}
-              height={100}
+              width="0"
+              height="0"
               alt="The image selected by the user."
-              className="w-full h-full rounded-md"
+              sizes="100wv"
+              className="w-36 h-36 rounded-md mx-auto"
             />
           </div>
         )}
@@ -49,7 +50,7 @@ const ImagePicker = ({ label, name }) => {
         ref={imageInput}
       />
       <button
-        className="p-3 border border-gray-700 rounded-md hover:bg-gray-400 transition-all duration-100 ease-in"
+        className="p-3 border border-gray-700 rounded-md hover:bg-gray-400 transition-all duration-100 ease-in mt-2"
         type="button"
         onClick={handlePickClick}
       >

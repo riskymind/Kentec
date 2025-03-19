@@ -7,14 +7,14 @@ export default function CreatePage() {
 
   return (
     <div>
-      <BackButton className="mt-4 border-dotted border-2 py-2 px-4 rounded-md">
+      <BackButton className="mt-4 border-dotted border-2 py-2 px-4 rounded-md drop-shadow-[0_35px_35px_rgba(255,255,255,0.25)]">
         back
       </BackButton>
       <div className="max-w-3xl mx-auto mt-10 p-6 bg-white/50 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-center text-gray-800">
           Post a New Stamped Floor
         </h1>
-        <p className="text-gray-800 text-center mt-2">
+        <p className="text-gray-800 text-center mt-2 text-sm underline decoration-black underline-offset-8 decoration-dotted">
           Share your concrete stamped floor design with others on the home page.
         </p>
 

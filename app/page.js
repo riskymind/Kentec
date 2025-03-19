@@ -1,5 +1,8 @@
 import Link from "next/link";
 import ImageSlideShow from "./components/image_slideshow";
+import { motion } from "framer-motion";
+import HomeBtns from '@/app/components/home_btns'
+
 
 export default function Home() {
   return (
@@ -23,25 +26,14 @@ export default function Home() {
               Floors
             </p>
           </div>
-          <div className="flex gap-2 w-full justify-center p-4">
-            <Link
-              href="/stamp/create_stamp"
-              className="p-3 border border-gray-700 rounded-md hover:bg-gray-400 transition-all duration-100 ease-in"
-            >
-              Add Stamp
-            </Link>
-            <Link
-              href="/stamp"
-              className="p-3 bg-white text-black border border-gray-700 rounded-md hover:bg-gray-400 transition-all duration-100 ease-in"
-            >
-              Explore Gallery
-            </Link>
-          </div>
+          <HomeBtns />
         </div>
       </header>
       <main className="">
         <section className="max-w-3/4 mx-auto text-center flex flex-col gap-4">
-          <h2 className="text-center text-2xl md:text-5xl font-bold py-6">How we work</h2>
+          <h2 className="text-center text-2xl md:text-5xl font-bold py-6">
+            How we work
+          </h2>
           <p className="md:w-3/4 mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sem
             libero, euismod vel euismod ut, tempor sed orci. Mauris id purus
@@ -54,7 +46,9 @@ export default function Home() {
         </section>
 
         <section className="max-w-3/4 mx-auto text-center flex flex-col gap-4">
-          <h2 className="text-center text-2xl md:text-5xl font-bold py-6">Why Kentec Stamps</h2>
+          <h2 className="text-center text-2xl md:text-5xl font-bold py-6">
+            Why Kentec Stamps
+          </h2>
           <p className="md:w-3/4 mx-auto">
             Etiam ut viverra lectus. Integer hendrerit massa tortor, ac pretium
             mi scelerisque nec. Vivamus sed neque urna. Suspendisse quis orci ut

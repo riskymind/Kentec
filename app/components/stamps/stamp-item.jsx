@@ -20,7 +20,7 @@ export default function StampItem({ title, slug, image, description }) {
               width={100}
               height={100}
               priority
-              className="w-full h-full"
+              className="w-full h-full scale-90 hover:scale-100 transition-all duration-500 ease-in-out rounded-lg drop-shadow-[0_35px_35px_rgba(255,255,255,0.25)]"
             />
           </div>
         </header>
@@ -34,12 +34,12 @@ export default function StampItem({ title, slug, image, description }) {
             <div className="bg-gray-200 p-2 rounded-md hover:bg-gray-600">
               <Link
                 href={`/stamp/${slug}`}
-                className="text-gray-950 hover:text-white"
+                className="text-gray-950 hover:text-white transition-all duration-500 ease-in-out"
               >
                 View Details
               </Link>
             </div>
-              <SocialLink href={whatsappUrl} icon={FaWhatsapp}/>
+              <SocialLink href={whatsappUrl} icon={FaWhatsapp} size={34} color={"25D366"}/>
           </div>
         </div>
       </article>
