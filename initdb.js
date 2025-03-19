@@ -15,7 +15,42 @@ const dummyStamps = [
     image: "/images/image_2.jpeg",
     description:
       "Replicates the look of traditional cobblestone streets with rounded, textured stones.",
-  }
+  },
+  {
+    title: "Wood Plank",
+    slug: "wood-plank",
+    image: "/images/image_3.jpeg",
+    description:
+      "Imitates real wooden planks while providing durability and resistance to rot or termites.",
+  },
+  {
+    title: "Herringbone Brick",
+    slug: "herringbone-brick",
+    image: "/images/image_8.jpeg",
+    description:
+      "Creates the appearance of bricks laid in a herringbone pattern, offering a classic design.",
+  },
+  {
+    title: "Random Stone",
+    slug: "random-stone",
+    image: "/images/image_5.jpeg",
+    description:
+      "Creates an irregular, natural stone pattern with a mix of different-sized stones, perfect for an organic look",
+  },
+  {
+    title: "River Rock",
+    slug: "river-rock",
+    image: "/images/image_6.jpeg",
+    description:
+      "Mimics the look of natural river stones embedded in concrete, creating a natural and organic feel.",
+  },
+  {
+    title: "Seamless",
+    slug: "seam-less",
+    image: "/images/image_7.jpeg",
+    description:
+      "Provides a continuous slate texture without visible joints or patterns, creating a smooth, elegant look.",
+  },
 ];
 
 db.prepare(
@@ -46,4 +81,4 @@ async function initData() {
         }
 }
 
-initData()
+// initData()

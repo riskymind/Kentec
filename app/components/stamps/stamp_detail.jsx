@@ -14,7 +14,7 @@ export default function StampDetail({ stamp }) {
       <main className="flex w-full justify-between mt-16 flex-wrap md:gap-8 gap-4">
         <div className="h-[25rem] md:flex-1 rounded-lg bg-red-400">
           <Image
-            src={stamp.image}
+            src={`/images/${stamp.image}`}
             width={100}
             height={100}
             alt={stamp.title}

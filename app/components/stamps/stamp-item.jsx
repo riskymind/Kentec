@@ -4,7 +4,7 @@ import { SocialLink } from "@/app/components/social_link";
 import { socialLinks } from "@/app/config";
 import { FaWhatsapp } from "react-icons/fa6";
 
-export default function StampItem({ title, slug, image, description }) {
+export default function StampItem({ _id, title, slug, image, description }) {
 
 
     const message = `Hello! I'm interested in this image: ${image}`;
@@ -15,7 +15,7 @@ export default function StampItem({ title, slug, image, description }) {
         <header className="w-full h-100">
           <div className="h-full">
             <Image
-              src={image}
+              src={`/images/${image}`}
               alt={title}
               width={100}
               height={100}
@@ -33,7 +33,7 @@ export default function StampItem({ title, slug, image, description }) {
           <div className="flex items-center justify-between pr-2 my-2">
             <div className="bg-gray-200 p-2 rounded-md hover:bg-gray-600">
               <Link
-                href={`/stamp/${slug}`}
+                href={`/stamp/${_id}`}
                 className="text-gray-950 hover:text-white transition-all duration-500 ease-in-out"
               >
                 View Details
