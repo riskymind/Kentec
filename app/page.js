@@ -1,10 +1,8 @@
-import Link from "next/link";
 import ImageSlideShow from "./components/image_slideshow";
-import { motion } from "framer-motion";
-import HomeBtns from '@/app/components/home_btns'
-
+import HomeBtns from "@/app/components/home_btns";
 
 export default function Home() {
+
   return (
     <>
       <header className="flex w-full justify-center mt-16 flex-wrap md:gap-8 gap-4">

@@ -83,7 +83,7 @@ export default function Navbar() {
           )}
 
           {session && (
-            <div className="flex items-center">
+            <div className="flex gap-2">
               <Link href="/messages">
                 <button className="relative rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="absolute -inset-1.5"></span>
@@ -179,51 +179,8 @@ export default function Navbar() {
             className="h-[450px] md:hidden transition-all duration-800 ease-in-out absolute z-20"
           >
             <nav className="h-full w-[200px] bg-gray-500/90 relative">
-              <ul className="flex z-20 w-[200px] flex-col gap-4 p-6 bg-gray-500/90">
-                <li className="w-full" onClick={() => setOpenMenu(!openMenu)}>
-                  <NavLink href="/stamp" className="hover:bg-gray-800 w-full">
-                    Gallery
-                  </NavLink>
-                </li>
-                <li className="w-full" onClick={() => setOpenMenu(!openMenu)}>
-                  <NavLink href="/about" className="hover:bg-gray-800 w-full">
-                    About Us
-                  </NavLink>
-                </li>
-
-                {session && (
-                  <li className="w-full" onClick={() => setOpenMenu(!openMenu)}>
-                    <NavLink
-                      href="stamp/create_stamp"
-                      className="hover:bg-gray-800 w-full"
-                    >
-                      Create Stamp
-                    </NavLink>
-                  </li>
-                )}
-              </ul>
-              {!session && (
-                <div className="md:block px-6 absolute bottom-0 py-4">
-                  <div className="flex items-center">
-                    {providers &&
-                      Object.values(providers).map((provider) => (
-                        <button
-                          className="flex items-center"
-                          onClick={() => signIn(provider.id)}
-                          key={provider.name}
-                        >
-                          <FaGoogle className="text-white mr-2 cursor-pointer" />
-                          <span className="cursor-pointer hover:underline hover:underline-offset-8">
-                            Login or Register
-                          </span>
-                        </button>
-                      ))}
-                  </div>
-                </div>
-              )}
-
               {session && (
-                <div className="flex items-center px-6 py-4 absolute bottom-0">
+                <div className="flex justify-around px-6 py-4 w-full">
                   <Link href="/messages">
                     <button className="relative rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5"></span>
@@ -294,6 +251,48 @@ export default function Navbar() {
                         </button>
                       </div>
                     )}
+                  </div>
+                </div>
+              )}
+              <ul className="flex z-20 w-[200px] flex-col gap-4 p-6 bg-gray-500/90">
+                <li className="w-full" onClick={() => setOpenMenu(!openMenu)}>
+                  <NavLink href="/stamp" className="hover:bg-gray-800 w-full">
+                    Gallery
+                  </NavLink>
+                </li>
+                <li className="w-full" onClick={() => setOpenMenu(!openMenu)}>
+                  <NavLink href="/about" className="hover:bg-gray-800 w-full">
+                    About Us
+                  </NavLink>
+                </li>
+
+                {session && (
+                  <li className="w-full" onClick={() => setOpenMenu(!openMenu)}>
+                    <NavLink
+                      href="stamp/create_stamp"
+                      className="hover:bg-gray-800 w-full"
+                    >
+                      Create Stamp
+                    </NavLink>
+                  </li>
+                )}
+              </ul>
+              {!session && (
+                <div className="md:block px-6 absolute bottom-0 py-4">
+                  <div className="flex items-center">
+                    {providers &&
+                      Object.values(providers).map((provider) => (
+                        <button
+                          className="flex items-center"
+                          onClick={() => signIn(provider.id)}
+                          key={provider.name}
+                        >
+                          <FaGoogle className="text-white mr-2 cursor-pointer" />
+                          <span className="cursor-pointer hover:underline hover:underline-offset-8">
+                            Login or Register
+                          </span>
+                        </button>
+                      ))}
                   </div>
                 </div>
               )}
