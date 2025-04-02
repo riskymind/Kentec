@@ -4,9 +4,9 @@ import Stamp from "@/models/stamp.model";
 import { getSessionUser } from "@/utils/getSessionUser";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import cloudinary from "../../config/cloudinary";
+import cloudinary from "@/config/cloudinary";
 
-export async function createStamp(formData) {
+async function createStamp(formData) {
   await connectDB();
 
   const sessionUser = await getSessionUser();
@@ -17,6 +17,8 @@ export async function createStamp(formData) {
 
   const { userId } = sessionUser;
 
+  const images = formData.getAll("image").filter((img) => img.name !== "");
+
   const stampData = {
     title: formData.get("title"),
     description: formData.get("description"),
@@ -25,23 +27,23 @@ export async function createStamp(formData) {
 
   const imageUrls = [];
 
-  // for (const imageFile of images) {
-  const imageBuffer = await imageFile.arrayBuffer();
-  const imageArray = Array.from(new Uint8Array(imageBuffer));
-  const imageData = Buffer.from(imageArray);
+  for (const imageFile of images) {
+    const imageBuffer = await imageFile.arrayBuffer();
+    const imageArray = Array.from(new Uint8Array(imageBuffer));
+    const imageData = Buffer.from(imageArray);
 
-  // Convert the image data to base64
-  const imageBase64 = imageData.toString("base64");
+    // Convert the image data to base64
+    const imageBase64 = imageData.toString("base64");
 
-  // Make request to upload to clodinary
-  const result = await cloudinary.uploader.upload(
-    `data:image/png;base64,${imageBase64}`,
-    {
-      folder: "kayrent_images",
-    }
-  );
-  imageUrls.push(result.secure_url);
-  // }
+    // Make request to upload to clodinary
+    const result = await cloudinary.uploader.upload(
+      `data:image/png;base64,${imageBase64}`,
+      {
+        folder: "kentec_images",
+      }
+    );
+    imageUrls.push(result.secure_url);
+  }
 
   stampData.image = imageUrls;
 
@@ -59,3 +61,5 @@ export async function createStamp(formData) {
   // await saveStamp(stamp)
   // redirect("/stamp")
 }
+
+export default createStamp;

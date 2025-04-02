@@ -66,11 +66,21 @@ export const authOptions = {
       }
     },
 
+    // async jwt({ token, user }) {
+    //   if (user) {
+    //     token.id = user._id;
+    //     token.email = user.email;
+    //   }
+    //   return token;
+    // },
+
     async session({ session, token }) {
       if (token) {
+        const user = await User.findOne({email: token.email})
         session.user = {
           email: token.email,
           image: token.picture,
+          id: user._id.toString(),
           isAdmin: token.isAdmin, // Include admin status
         };
       }

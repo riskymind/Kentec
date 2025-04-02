@@ -6,9 +6,13 @@ const StampSchema = new Schema(
       type: String,
       required: true,
     },
-    slug: String,
     description: String,
     image: [{ type: String }],
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   { timestamps: true }
 );

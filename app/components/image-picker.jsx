@@ -5,40 +5,48 @@ import { useRef, useState } from "react";
 
 const ImagePicker = ({ label, name }) => {
   const imageInput = useRef();
-  const [pickedImage, setPickedImage] = useState();
+  const [pickedImages, setPickedImages] = useState([]);
 
   function handlePickClick() {
     imageInput.current.click();
   }
 
   function handleImageChange(event) {
-    const file = event.target.files[0];
-    if (!file) return;
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
 
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      setPickedImage(fileReader.result);
-    };
-    fileReader.readAsDataURL(file);
+    const imageArray = [];
+
+    Array.from(files).forEach((file) => {
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        imageArray.push(fileReader.result);
+        if (imageArray.length === files.length) {
+          setPickedImages(imageArray);
+        }
+      };
+      fileReader.readAsDataURL(file);
+    });
   }
 
   return (
     <div>
-      {/* <label htmlFor={name} className="block text-gray-700 font-medium">{label}</label> */}
       <div>
-        {!pickedImage && <p className="mb-2">Upload Image.</p>}
-        {pickedImage && (
-          <div className="mb-1">
-            <Image
-              src={pickedImage}
-              width="0"
-              height="0"
-              alt="The image selected by the user."
-              sizes="100wv"
-              className="w-36 h-36 rounded-md mx-auto"
-            />
-          </div>
-        )}
+        {pickedImages.length === 0 && <p className="mb-2">Upload Image.</p>}
+        <div className="flex flex-wrap gap-2">
+          {pickedImages.map((image, index) => (
+            <div key={index} className="mb-1">
+              <Image
+                src={image}
+                width="0"
+                height="0"
+                alt={`Selected image ${index + 1}`}
+                sizes="100vw"
+                className="w-36 h-36 rounded-md mx-auto"
+              />
+            </div>
+          ))}
+        </div>
       </div>
       <input
         type="file"
@@ -46,6 +54,7 @@ const ImagePicker = ({ label, name }) => {
         accept="image/*"
         className="w-full p-2 border rounded-lg mt-1 hidden"
         required
+        multiple
         onChange={handleImageChange}
         ref={imageInput}
       />

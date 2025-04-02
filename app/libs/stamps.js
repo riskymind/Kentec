@@ -1,6 +1,6 @@
 import sql from "better-sqlite3";
 import slugify from "slugify";
-import cloudinary from "@/app/libs/cloudinary";
+import cloudinary from "@/config/cloudinary";
 
 const db = sql("stamp.db");
 

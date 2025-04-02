@@ -7,7 +7,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 export default function StampItem({ _id, title, slug, image, description }) {
 
 
-    const message = `Hello! I'm interested in this image: ${image}`;
+    const message = `Hello! I'm interested in this image: ${image[0]}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `${socialLinks.whatsapp}?text=${encodedMessage}`
   return (
@@ -15,7 +15,7 @@ export default function StampItem({ _id, title, slug, image, description }) {
         <header className="w-full h-100">
           <div className="h-full">
             <Image
-              src={`/images/${image}`}
+              src={image[0]}
               alt={title}
               width={100}
               height={100}
