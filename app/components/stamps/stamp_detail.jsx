@@ -1,18 +1,19 @@
-import { SocialLink } from "@/app/components/social_link";
-import { socialLinks } from "@/app/config";
-import { FaWhatsapp } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
-import BackButton from "@/app/components/back_btn";
 import Image from "next/image";
+import BookmarkButton from "../BookmarkButton";
+import ShareButtons from "../ShareButtons";
+import StampContactForm from "../StampContactForm";
 
 export default function StampDetail({ stamp }) {
   return (
     <div>
-      <BackButton className="mt-4 border-dotted border-2 py-2 px-4 rounded-md">
-        back
-      </BackButton>
-      <main className="flex w-full justify-between mt-16 flex-wrap md:gap-8 gap-4">
-        <div className="h-[25rem] md:flex-1 rounded-lg bg-red-400">
+      <main className="flex flex-col md:flex-row w-full md:justify-between mt-16 md:flex-wrap md:gap-8 gap-4">
+        <div className="md:h-[25rem] md:flex-2 rounded-lg">
+          <h1 className="text-3xl font-bold tracking-wide text-center mb-4">
+            {stamp.title}
+          </h1>
+          <p className="font-mono text-gray-400 mb-4 text-center">
+            {stamp.description}
+          </p>
           <Image
             src={stamp.image[0]}
             width={100}
@@ -22,22 +23,11 @@ export default function StampDetail({ stamp }) {
           />
         </div>
 
-        <div className="flex-1 flex flex-col">
-          <div className="text-center flex flex-col gap-3">
-            <h1 className="text-3xl font-bold tracking-wide">{stamp.title}</h1>
-            <p className="font-mono text-gray-400">{stamp.description}</p>
-          </div>
-          <div className="w-full p-4 text-center">
-            <h3 className="text-center font-extrabold text-rose-500">
-              Contact us
-            </h3>
-            <div className="flex justify-center gap-3">
-              <SocialLink href={socialLinks.whatsapp} icon={FaWhatsapp} size={34} color={"25D366"}/>
-
-              <SocialLink href={socialLinks.email} icon={MdEmail} size={34} color={""}/>
-            </div>
-          </div>
-        </div>
+        <aside className="space-y-4 flex-1">
+          <BookmarkButton stamp={stamp} />
+          <ShareButtons stamp={stamp} />
+          <StampContactForm stamp={stamp} />
+        </aside>
       </main>
     </div>
   );

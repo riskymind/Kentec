@@ -4,8 +4,7 @@ import { SocialLink } from "@/app/components/social_link";
 import { socialLinks } from "@/app/config";
 import { FaWhatsapp } from "react-icons/fa6";
 
-export default function StampItem({ _id, title, slug, image, description }) {
-
+export default function StampItem({ _id, title, description, image }) {
 
     const message = `Hello! I'm interested in this image: ${image[0]}`;
     const encodedMessage = encodeURIComponent(message);

@@ -17,7 +17,13 @@ const UserSchema = new Schema(
     isAdmin: {
       type: Boolean,
       default: false
-    }
+    },
+    bookmarks: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Stamp',
+      },
+    ],
   },
   { timestamps: true }
 );
