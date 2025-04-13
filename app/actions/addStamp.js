@@ -5,6 +5,32 @@ import { getSessionUser } from "@/utils/getSessionUser";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import cloudinary from "@/config/cloudinary";
+import { Readable } from "stream";
+
+function bufferToStream(buffer) {
+  return new Readable({
+    read() {
+      this.push(buffer)
+      this.push(null)
+    }
+  })
+}
+
+async function uploadImageToCloudinary(imageFile) {
+  const buffer = Buffer.from(await imageFile.arrayBuffer());
+
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { folder: "kentec_images" },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result.secure_url);
+      }
+    );
+
+    bufferToStream(buffer).pipe(stream);
+  });
+}
 
 async function createStamp(formData) {
   await connectDB();
@@ -25,41 +51,15 @@ async function createStamp(formData) {
     owner: userId,
   };
 
-  const imageUrls = [];
+  const imageUrls = await Promise.all(images.map(uploadImageToCloudinary))
 
-  for (const imageFile of images) {
-    const imageBuffer = await imageFile.arrayBuffer();
-    const imageArray = Array.from(new Uint8Array(imageBuffer));
-    const imageData = Buffer.from(imageArray);
-
-    // Convert the image data to base64
-    const imageBase64 = imageData.toString("base64");
-
-    // Make request to upload to clodinary
-    const result = await cloudinary.uploader.upload(
-      `data:image/png;base64,${imageBase64}`,
-      {
-        folder: "kentec_images",
-      }
-    );
-    imageUrls.push(result.secure_url);
-  }
-
-  stampData.image = imageUrls;
+  stampData.image = imageUrls
 
   const newStamp = new Stamp(stampData);
   await newStamp.save();
 
   revalidatePath("/", "layout");
   redirect(`/stamp/${newStamp._id}`);
-
-  // const stamp = {
-  //   title: formData.get("title"),
-  //   description: formData.get("description"),
-  //   image: formData.get("image"),
-  // };
-  // await saveStamp(stamp)
-  // redirect("/stamp")
 }
 
 export default createStamp;

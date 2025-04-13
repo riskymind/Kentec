@@ -30,7 +30,7 @@ export default function AboutUs() {
               <li>✅ **Custom Patterns & Unique Finishes**</li>
               <li>✅ **Seamless Installation & Long-lasting Quality**</li>
             </ul>
-            <div className="mt-8">
+            <div className="mt-8 text-center">
               <Link href="https://wa.me/07046193975?text=Hello%20Kentec" className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-all duration-300 ease-in">
                 Contact Us
               </Link>

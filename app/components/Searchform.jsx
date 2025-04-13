@@ -23,16 +23,17 @@ const SearchForm = () => {
       onSubmit={handleSubmit}
     >
       <div className="w-full md:w-3/5 md:pr-2 mb-2 md:mb-0">
-        <label htmlFor="title" className="sr-only">
+        <label htmlFor="searchQuery" className="sr-only">
           Title of stamp
         </label>
         <input
           type="text"
           id="searchQuery"
+          name="searchQuery"
           placeholder="Enter Keywords"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-gray-500"
+          className="w-full px-4 py-3 rounded-lg shadow-md bg-white/50 text-gray-200 focus:outline-none focus:ring focus:ring-gray-500"
         />
       </div>
       <button

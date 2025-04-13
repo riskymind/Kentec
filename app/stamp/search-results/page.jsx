@@ -6,7 +6,8 @@ import StampItem from "@/app/components/stamps/stamp-item";
 import BackButton from "@/app/components/back_btn";
 
 const SearchResultsPage = async ({ searchParams }) => {
-  const searchQuery = await searchParams
+  const searchQuery =  searchParams?.searchQuery || ""
+  
   await connectDB();
 
   const queryPattern = new RegExp(searchQuery, "i");
@@ -17,6 +18,8 @@ const SearchResultsPage = async ({ searchParams }) => {
 
   const stampQueryResults = await Stamp.find(query).lean();
   const stamps = stampQueryResults.map(convertToSerializeableObject);
+
+  
 
   return (
     <section>
