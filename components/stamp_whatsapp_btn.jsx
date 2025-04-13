@@ -2,10 +2,10 @@
 
 import { useSession } from "next-auth/react";
 import { SocialLink } from "./social_link";
-import { socialLinks } from "../config";
+import { socialLinks } from "../app/config";
 import { FaWhatsapp } from "react-icons/fa6";
 
-const StampWhatsAppBtn = ({image}) => {
+const StampWhatsAppBtn = ({ image }) => {
   const { data: session } = useSession();
 
   const message = `Hello! I'm interested in this image: ${image}`;
@@ -26,4 +26,4 @@ const StampWhatsAppBtn = ({image}) => {
   );
 };
 
-export default StampWhatsAppBtn
+export default StampWhatsAppBtn;

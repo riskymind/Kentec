@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import deleteStamp from "../actions/deleteStamp";
+import deleteStamp from "../app/actions/deleteStamp";
 
 const ProfileStamps = ({ stamps: initialStamps }) => {
   const [stamps, setStamps] = useState(initialStamps);

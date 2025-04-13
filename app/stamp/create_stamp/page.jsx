@@ -1,10 +1,9 @@
-import BackButton from "@/app/components/back_btn";
-import ImagePicker from "@/app/components/image-picker";
-import StampSubmitBtn from "@/app/components/stamps/submit_stamp_btn";
-import createStamp  from "@/app/actions/addStamp";
+import BackButton from "@/components/back_btn";
+import ImagePicker from "@/components/image-picker";
+import StampSubmitBtn from "@/components/stamps/submit_stamp_btn";
+import createStamp from "@/app/actions/addStamp";
 
-export default function CreatePage() { 
-
+export default function CreatePage() {
   return (
     <div>
       <BackButton className="mt-4 border-dotted border-2 py-2 px-4 rounded-md flex items-center gap-2">
@@ -21,7 +20,9 @@ export default function CreatePage() {
         <form className="mt-6 space-y-4" action={createStamp}>
           {/* Title */}
           <div>
-            <label htmlFor="title" className="block text-gray-700 font-medium">Title</label>
+            <label htmlFor="title" className="block text-gray-700 font-medium">
+              Title
+            </label>
             <input
               type="text"
               id="title"
@@ -45,7 +46,7 @@ export default function CreatePage() {
               required
             />
           </div>
-            <ImagePicker name="image"/>
+          <ImagePicker name="image" />
           <StampSubmitBtn />
         </form>
       </div>

@@ -1,13 +1,13 @@
 import connectDB from "@/config/database";
 import Stamp from "@/models/stamp.model";
 import { convertToSerializeableObject } from "@/utils/convertToObject";
-import SearchForm from "@/app/components/Searchform";
-import StampItem from "@/app/components/stamps/stamp-item";
-import BackButton from "@/app/components/back_btn";
+import SearchForm from "@/components/Searchform";
+import StampItem from "@/components/stamps/stamp-item";
+import BackButton from "@/components/back_btn";
 
 const SearchResultsPage = async ({ searchParams }) => {
-  const searchQuery =  searchParams?.searchQuery || ""
-  
+  const searchQuery = searchParams?.searchQuery || "";
+
   await connectDB();
 
   const queryPattern = new RegExp(searchQuery, "i");
@@ -18,8 +18,6 @@ const SearchResultsPage = async ({ searchParams }) => {
 
   const stampQueryResults = await Stamp.find(query).lean();
   const stamps = stampQueryResults.map(convertToSerializeableObject);
-
-  
 
   return (
     <section>

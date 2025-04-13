@@ -4,7 +4,7 @@ import Stamp from "@/models/stamp.model";
 import { getSessionUser } from "@/utils/getSessionUser";
 import profileDefault from "@/app/assets/profile.png";
 import { convertToSerializeableObject } from "@/utils/convertToObject";
-import ProfileStamps from "@/app/components/ProfileStamps";
+import ProfileStamps from "@/components/ProfileStamps";
 
 const ProfilePage = async () => {
   await connectDB();
@@ -20,7 +20,9 @@ const ProfilePage = async () => {
 
   return (
     <section>
-      <h1 className="text-3xl font-bold my-4 text-gray-300 text-center">Your Profile</h1>
+      <h1 className="text-3xl font-bold my-4 text-gray-300 text-center">
+        Your Profile
+      </h1>
       <div className="container m-auto py-8">
         <div className="bg-gray-800 px-6 py-8 mb-4 shadow-md rounded-md border border-gray-300 m-4 md:m-0">
           <div className="flex flex-col md:flex-row relative">

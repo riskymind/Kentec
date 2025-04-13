@@ -3,12 +3,12 @@ import { FaBookmark } from "react-icons/fa6";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import bookmarkStamp from "../actions/bookmarkStamp";
-import checkBookmarkStatus from "../actions/checkbookmarkStatus";
+import bookmarkStamp from "../app/actions/bookmarkStamp";
+import checkBookmarkStatus from "../app/actions/checkbookmarkStatus";
 
 const BookmarkButton = ({ stamp }) => {
   const { data: session } = useSession();
-  const userId  = session?.user?.id;
+  const userId = session?.user?.id;
 
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [loading, setLoading] = useState(true);

@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SocialLink } from "@/app/components/social_link";
+import { SocialLink } from "@/components/social_link";
 import { socialLinks } from "@/app/config";
 import { FaWhatsapp } from "react-icons/fa6";
 import StampWhatsAppBtn from "../stamp_whatsapp_btn";
 
 export default function StampItem({ _id, title, description, image }) {
-
   // const message = `Hello! I'm interested in this image: ${image[0]}`;
   // const encodedMessage = encodeURIComponent(message);
   // const whatsappUrl = `${socialLinks.whatsapp}?text=${encodedMessage}`;
@@ -41,13 +40,13 @@ export default function StampItem({ _id, title, description, image }) {
               View Details
             </Link>
           </div>
-            {/* <SocialLink
+          {/* <SocialLink
               href={whatsappUrl}
               icon={FaWhatsapp}
               size={34}
               color={"25D366"}
             /> */}
-            <StampWhatsAppBtn image={image[0]}/>
+          <StampWhatsAppBtn image={image[0]} />
         </div>
       </div>
     </article>

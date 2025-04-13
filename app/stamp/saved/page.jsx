@@ -1,4 +1,4 @@
-import StampItem from "@/app/components/stamps/stamp-item";
+import StampItem from "@/components/stamps/stamp-item";
 import connectDB from "@/config/database";
 import User from "@/models/user.model";
 import Stamp from "@/models/stamp.model";

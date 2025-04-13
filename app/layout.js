@@ -1,11 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
-import Navbar from "@/app/components/nav";
-import Footer from "@/app/components/footer";
-import AuthProvider from "@/app/components/AuthProvider";
+import Navbar from "@/components/nav";
+import Footer from "@/components/footer";
+import AuthProvider from "@/components/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import { GlobalProvider } from "@/context/GlobalContext";
-import 'photoswipe/dist/photoswipe.css';
+import "photoswipe/dist/photoswipe.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

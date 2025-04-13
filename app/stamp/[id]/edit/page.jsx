@@ -1,13 +1,13 @@
-import BackButton from "@/app/components/back_btn";
-import ImagePicker from "@/app/components/image-picker";
-import StampSubmitBtn from "@/app/components/stamps/submit_stamp_btn";
+import BackButton from "@/components/back_btn";
+import ImagePicker from "@/components/image-picker";
+import StampSubmitBtn from "@/components/stamps/submit_stamp_btn";
 import updatedStamps from "@/app/actions/updateStamp";
 import connectDB from "@/config/database";
 import Stamp from "@/models/stamp.model";
 import { convertToSerializeableObject } from "@/utils/convertToObject";
 
 export default async function EditPage({ params }) {
-  const id = await params
+  const id = await params;
   await connectDB();
 
   const stampDoc = await Stamp.findById(id).lean();

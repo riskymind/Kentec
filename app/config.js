@@ -3,5 +3,5 @@ export const socialLinks = {
     instagram: "https://www.instagram.com/",
     linkedin: "https://www.linkedin.com/",
     email: "mailto:kentecglobalconcepts@gmail.com",
-    whatsapp: "https://wa.me/08035670434",
+    whatsapp: "https://wa.me/+2348035670434",
   };

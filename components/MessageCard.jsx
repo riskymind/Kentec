@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import { useGlobalContext } from "@/context/GlobalContext";
 import { useState } from "react";
-import markMessageAsRead from "../actions/markMessageAsRead";
-import deleteMessage from "../actions/deleteMessage";
+import markMessageAsRead from "../app/actions/markMessageAsRead";
+import deleteMessage from "../app/actions/deleteMessage";
 import { toast } from "react-toastify";
 
 const MessageCard = ({ message }) => {
@@ -12,17 +12,17 @@ const MessageCard = ({ message }) => {
   const { setUnreadCount } = useGlobalContext();
 
   const handleReadClick = async () => {
-    const read = await markMessageAsRead(message._id)
-    setIsRead(read)
-    setUnreadCount((prevCount)=> (read ? prevCount - 1 : prevCount + 1))
-    toast.success(`Marked as ${read ? "read" : "new"}`)
+    const read = await markMessageAsRead(message._id);
+    setIsRead(read);
+    setUnreadCount((prevCount) => (read ? prevCount - 1 : prevCount + 1));
+    toast.success(`Marked as ${read ? "read" : "new"}`);
   };
 
   const handleDeleteClick = async () => {
-    await deleteMessage(message._id)
-    setIsDeleted(true)
-    setUnreadCount((prevCount)=> (isRead ? prevCount : prevCount - 1))
-    toast.success("Message Deleted.")
+    await deleteMessage(message._id);
+    setIsDeleted(true);
+    setUnreadCount((prevCount) => (isRead ? prevCount : prevCount - 1));
+    toast.success("Message Deleted.");
   };
 
   if (isDeleted) {

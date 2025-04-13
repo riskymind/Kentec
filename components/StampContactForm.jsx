@@ -3,7 +3,7 @@ import { SubmitMessageButton } from "./SubmitMessageButton";
 import { useEffect, useActionState } from "react";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
-import addMessage from "../actions/addMessage";
+import addMessage from "../app/actions/addMessage";
 
 const StampContactForm = ({ stamp }) => {
   const { data: session } = useSession();
